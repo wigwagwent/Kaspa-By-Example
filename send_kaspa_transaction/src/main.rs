@@ -26,7 +26,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     client.connect(None).await?;
     println!("Connected successfully!");
 
-    send_transaction_with_payload(&client, &mnemonic, b"test payload".to_vec()).await
+    send_transaction_with_payload(&client, &mnemonic, b"Hello World".to_vec()).await
 }
 
 fn derive_keys(
@@ -80,8 +80,9 @@ async fn send_transaction_with_payload(
         derived_address.clone(),
         1,
         1,
-        PaymentDestination::Change,
-        Fees::None,
+        PaymentDestination::Change, // PaymentOutputs(outputs),
+        Some(1.1),
+        Fees::None, // SenderPays(0),
         Some(payload),
         None,
     )?;

@@ -979,7 +979,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
 dependencies = [
  "libc",
- "windows-sys 0.61.2",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -1483,7 +1483,7 @@ dependencies = [
  "js-sys",
  "log",
  "wasm-bindgen",
- "windows-core 0.62.2",
+ "windows-core",
 ]
 
 [[package]]
@@ -1731,9 +1731,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-addresses"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7a74074a802f08fd3e925dd9ada20ba428f8ccbf6539a7f91b2e6de81ba19a95"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "borsh",
  "js-sys",
@@ -1747,9 +1746,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-bip32"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "11fb479f6dbaeca0b6d8b177b1ec48e5fbf2d6fbe4daaa6553fc3f6057124876"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "borsh",
  "bs58",
@@ -1775,9 +1773,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-consensus-client"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "85ee06353801f5bf030a166724738209d2ba5157c2ce6b1ead5367f92e8ef485"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "ahash",
  "cfg-if 1.0.3",
@@ -1805,10 +1802,10 @@ dependencies = [
 
 [[package]]
 name = "kaspa-consensus-core"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "720b0a6102c97bc6542b30f4a0289f4dc7051b414973bf44d77be7dca9962128"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
+ "arc-swap",
  "async-trait",
  "borsh",
  "cfg-if 1.0.3",
@@ -1841,9 +1838,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-consensus-notify"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "27fc65c06b6786f1565990caaa66ad69016af3fccd69761c55552c148369d264"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "async-channel 2.5.0",
  "cfg-if 1.0.3",
@@ -1862,9 +1858,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-consensus-wasm"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2fc76792205a77daaffebf1ccf1cedbfcc6cfb2e70155b63ee5e116a62b01624"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "cfg-if 1.0.3",
  "faster-hex",
@@ -1888,10 +1883,10 @@ dependencies = [
 
 [[package]]
 name = "kaspa-core"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "871b65456d7ef10c6f7780f6bf2f28497021097a113031b9e4161a9526fb50c0"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
+ "anyhow",
  "cfg-if 1.0.3",
  "ctrlc",
  "futures-util",
@@ -1908,9 +1903,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-hashes"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fce9a49e4dccc7f6593ef2451277547435f9a5af59a9e6f5da822a3017ad94c2"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "blake2b_simd",
  "borsh",
@@ -1928,9 +1922,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-index-core"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1e655adb1ae32b14877031143e714e0d86fac010f2fc3dbee811fe6c141b83b5"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "async-channel 2.5.0",
  "async-trait",
@@ -1949,9 +1942,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-math"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ba496c4b99439bda34dbb1772a484141cd6efa6c79be6f942a0f15cbaeb49ad8"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "borsh",
  "faster-hex",
@@ -1970,18 +1962,16 @@ dependencies = [
 
 [[package]]
 name = "kaspa-merkle"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9fb0c676bf3644a7b68d11a8eb8fa6f9f5f63b4988af2a9b9d9c1a5b2f9d1846"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "kaspa-hashes",
 ]
 
 [[package]]
 name = "kaspa-metrics-core"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6849ed9524df472489a2029c71a5519063b42bbd55b8d933e657b698c8a959ac"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "async-trait",
  "borsh",
@@ -1997,9 +1987,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-mining-errors"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3aed9034ee0a2a08107298881449e603d2c7a32c0fda1cd26ab8a4fd3a74c904"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "kaspa-consensus-core",
  "thiserror 1.0.69",
@@ -2007,9 +1996,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-muhash"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7c87c84de741d13b2ee62ef30442d8419f4f8f5d20ac2419c1eb0ae9aac690c0"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "kaspa-hashes",
  "kaspa-math",
@@ -2019,9 +2007,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-notify"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e861903133d00283bc49c608e49a7f65503160baf5f70ed2592e4fb2bf1e92be"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "async-channel 2.5.0",
  "async-trait",
@@ -2052,9 +2039,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-rpc-core"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "698d0342f531853b78ad17d303e41de77b9d85e22ac52acf0a085c3165f2bf2a"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "async-channel 2.5.0",
  "async-trait",
@@ -2095,9 +2081,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-rpc-macros"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a2062739f11dca72629f0b30c61387672e36668ab72994471522c8652de0b833"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "convert_case 0.6.0",
  "proc-macro-error",
@@ -2109,9 +2094,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-txscript"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8e669f2ac7595022d3b1835d246d8419a088a8ef95795063a0245e64fd5fc962"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "blake2b_simd",
  "borsh",
@@ -2141,9 +2125,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-txscript-errors"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "28df66c9fe89ca3438a28dc0735b846ea03c2a77ceaaf23323df6afd2b66b76b"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "secp256k1",
  "thiserror 1.0.69",
@@ -2151,9 +2134,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-utils"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d01767827fd2b35cdc30425c6af9cbf21338c6cd47c9135d150d7aa9733e8bd8"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "arc-swap",
  "async-channel 2.5.0",
@@ -2182,9 +2164,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-wallet-core"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "091040a3256ec85cf8e417e427907543c14d40e6decb4c381ba0b8ebdc0b9413"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "aes",
  "ahash",
@@ -2262,9 +2243,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-wallet-keys"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "10cbb193b5fb0504135cd8d42851c1bacf460171913a036a19b76c3d4f4494b5"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "async-trait",
  "borsh",
@@ -2296,9 +2276,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-wallet-macros"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "35e880f73176d23e9389abf7aa159bf4d8cddb377c653d70a96a6a2175d8c3c7"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "convert_case 0.5.0",
  "proc-macro-error",
@@ -2311,9 +2290,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-wallet-pskt"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b6434eb954c7795bf6aa472ae6b275bcae1afbeb644f326555914d86469b923a"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "bincode",
  "derive_builder",
@@ -2328,6 +2306,7 @@ dependencies = [
  "kaspa-txscript-errors",
  "kaspa-utils",
  "secp256k1",
+ "separator",
  "serde",
  "serde-value",
  "serde-wasm-bindgen",
@@ -2340,9 +2319,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-wasm-core"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1b23d8a996f17e8e2dc52e65764b1cc9186cdec333d6ed23266c2ccd2bceae9e"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "faster-hex",
  "hexplay",
@@ -2353,9 +2331,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-wrpc-client"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4168e922ee3e43f4fc2f1ccc5f97e2acceb11a490daa683223108e582ed250ce"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "async-std",
  "async-trait",
@@ -2391,9 +2368,8 @@ dependencies = [
 
 [[package]]
 name = "kaspa-wrpc-wasm"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ae671129e621eb98e2476ffa64ffa80771a1c1235e92b758f29377f32eff24ab"
+version = "1.0.1"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?branch=stable#f7ee67ea7c1695ba843ad431107a146a82213a5b"
 dependencies = [
  "ahash",
  "async-std",
@@ -2832,7 +2808,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7d8fae84b431384b68627d0f9b3b1245fcf9f46f6c0e3dc902e9dce64edd1967"
 dependencies = [
  "libc",
- "windows-sys 0.61.2",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -3091,7 +3067,7 @@ dependencies = [
  "once_cell",
  "socket2",
  "tracing",
- "windows-sys 0.60.2",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -3335,7 +3311,7 @@ dependencies = [
  "errno",
  "libc",
  "linux-raw-sys",
- "windows-sys 0.61.2",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -4426,7 +4402,7 @@ version = "0.1.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22"
 dependencies = [
- "windows-sys 0.61.2",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -4441,7 +4417,7 @@ version = "0.57.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "12342cb4d8e3b046f3d80effd474a7a02447231330ef77d71daa6fbc40681143"
 dependencies = [
- "windows-core 0.57.0",
+ "windows-core",
  "windows-targets 0.52.6",
 ]
 
@@ -4451,23 +4427,10 @@ version = "0.57.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d2ed2439a290666cd67ecce2b0ffaad89c2a56b976b736e6ece670297897832d"
 dependencies = [
- "windows-implement 0.57.0",
- "windows-interface 0.57.0",
+ "windows-implement",
+ "windows-interface",
  "windows-result 0.1.2",
  "windows-targets 0.52.6",
-]
-
-[[package]]
-name = "windows-core"
-version = "0.62.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b8e83a14d34d0623b51dce9581199302a221863196a1dde71a7663a4c2be9deb"
-dependencies = [
- "windows-implement 0.60.2",
- "windows-interface 0.59.3",
- "windows-link 0.2.1",
- "windows-result 0.4.1",
- "windows-strings 0.5.1",
 ]
 
 [[package]]
@@ -4482,32 +4445,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "windows-implement"
-version = "0.60.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "053e2e040ab57b9dc951b72c264860db7eb3b0200ba345b4e4c3b14f67855ddf"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.106",
-]
-
-[[package]]
 name = "windows-interface"
 version = "0.57.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "29bee4b38ea3cde66011baa44dba677c432a78593e202392d1e9070cf2a7fca7"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.106",
-]
-
-[[package]]
-name = "windows-interface"
-version = "0.59.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3f316c4a2570ba26bbec722032c4099d8c8bc095efccdc15688708623367e358"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -4534,7 +4475,7 @@ checksum = "5b8a9ed28765efc97bbc954883f4e6796c33a06546ebafacbabee9696967499e"
 dependencies = [
  "windows-link 0.1.3",
  "windows-result 0.3.4",
- "windows-strings 0.4.2",
+ "windows-strings",
 ]
 
 [[package]]
@@ -4556,30 +4497,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "windows-result"
-version = "0.4.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7781fa89eaf60850ac3d2da7af8e5242a5ea78d1a11c49bf2910bb5a73853eb5"
-dependencies = [
- "windows-link 0.2.1",
-]
-
-[[package]]
 name = "windows-strings"
 version = "0.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "56e6c93f3a0c3b36176cb1327a4958a0353d5d166c2a35cb268ace15e91d3b57"
 dependencies = [
  "windows-link 0.1.3",
-]
-
-[[package]]
-name = "windows-strings"
-version = "0.5.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7837d08f69c77cf6b07689544538e017c1bfcf57e34b4c0ff58e6c2cd3b37091"
-dependencies = [
- "windows-link 0.2.1",
 ]
 
 [[package]]

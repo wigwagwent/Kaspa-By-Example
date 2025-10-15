@@ -4,9 +4,9 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-kaspa-addresses = "0.15"
-kaspa-bip32 = "0.15"
-kaspa-wallet-core = "0.15"
+kaspa-addresses = { git = "https://github.com/wigwagwent/rusty-kaspa", branch = "stable" }
+kaspa-bip32 = { git = "https://github.com/wigwagwent/rusty-kaspa", branch = "stable" }
+kaspa-wallet-core = { git = "https://github.com/wigwagwent/rusty-kaspa", branch = "stable" }
 tokio = { version = "1", features = ["full"] }
-kaspa-wrpc-client = "0.15"
+kaspa-wrpc-client = { git = "https://github.com/wigwagwent/rusty-kaspa", branch = "stable" }
 dotenv = "0.15.0"
