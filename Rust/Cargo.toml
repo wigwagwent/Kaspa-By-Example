@@ -1,0 +1,6 @@
+[workspace]
+resolver = "3"
+members = [
+    "kbe_utils", "send_kasia_broadcast", "kasia_interface", "kbe_seed_parser",
+]
+

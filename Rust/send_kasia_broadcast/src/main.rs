@@ -1,17 +1,20 @@
-use dotenv::dotenv;
 use kaspa_addresses::{Address, Version};
-use kaspa_bip32::secp256k1::{self, Secp256k1};
-use kaspa_bip32::{ExtendedPrivateKey, Language, Mnemonic};
 use kaspa_wallet_core::tx::{Fees, Generator, GeneratorSettings, PaymentDestination};
 use kaspa_wallet_core::utxo::UtxoEntryReference;
 use kaspa_wrpc_client::{KaspaRpcClient, WrpcEncoding, prelude::*};
 use std::sync::Arc;
+use std::thread::sleep;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    connect_and_send().await
+}
+
+// Exists to call from tests
+async fn connect_and_send() -> Result<(), Box<dyn std::error::Error>> {
     println!("Connecting to Kaspa WebSocket node...");
 
-    dotenv().ok();
+    kbe_utils::load_users_env_file();
     let mnemonic = std::env::var("MNEMONIC")?;
 
     // Connect to the Kaspa node
@@ -26,26 +29,21 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     client.connect(None).await?;
     println!("Connected successfully!");
 
-    send_transaction_with_payload(&client, &mnemonic, b"Hello World".to_vec()).await
-}
+    // Send transaction with a custom payload
+    send_transaction_with_payload(
+        &client,
+        &mnemonic,
+        b"Hello World. Welcome from Kaspa By Example".to_vec(),
+    )
+    .await?;
 
-fn derive_keys(
-    mnemonic_phrase: &str,
-) -> Result<(secp256k1::XOnlyPublicKey, secp256k1::SecretKey), Box<dyn std::error::Error>> {
-    let secp = Secp256k1::new();
-    let mnemonic = Mnemonic::new(mnemonic_phrase, Language::English)?;
-    let seed = mnemonic.to_seed("");
-    let xprv = ExtendedPrivateKey::<kaspa_bip32::SecretKey>::new(seed)?;
+    sleep(tokio::time::Duration::from_secs(2)); // To avoid sending the utxo too quickly in succession
 
-    let path = "m/44'/111111'/0'/0".parse()?;
-    let account_key = xprv.derive_path(&path)?;
-    let private_key = account_key.derive_child(0.into())?;
+    // Send transaction with a Kasia broadcast message
+    let message =
+        kasia_interface::KaspaMessage::new_broadcast("Kaspa_By_Example_Demo_Code", "Hello World");
 
-    let secret_key = secp256k1::SecretKey::from_slice(&private_key.to_bytes())?;
-    let public_key = secp256k1::PublicKey::from_secret_key(&secp, &secret_key);
-    let x_only_pubkey = public_key.x_only_public_key().0;
-
-    Ok((x_only_pubkey, secret_key))
+    send_transaction_with_payload(&client, &mnemonic, message.to_payload().unwrap()).await
 }
 
 async fn send_transaction_with_payload(
@@ -55,14 +53,14 @@ async fn send_transaction_with_payload(
 ) -> Result<(), Box<dyn std::error::Error>> {
     let network_id = NetworkId::new(NetworkType::Mainnet);
 
-    let (x_public_key, private_key) = derive_keys(&mnemonic)?;
+    let (x_public_key, private_key) = kbe_seed_parser::derive_keys(&mnemonic)?;
     let derived_address = Address::new(
         network_id.into(),
         Version::PubKey,
         &x_public_key.serialize(),
     );
 
-    println!("Derived address: {}", derived_address);
+    println!("\nDerived address: {}", derived_address);
 
     let utxos = client
         .get_utxos_by_addresses(vec![derived_address.clone()])
@@ -80,15 +78,14 @@ async fn send_transaction_with_payload(
         derived_address.clone(),
         1,
         1,
-        PaymentDestination::Change, // PaymentOutputs(outputs),
-        Some(1.1),
-        Fees::None, // SenderPays(0),
+        PaymentDestination::Change,
+        Some(1.04), // TODO: for some reason 1.0 causes "fee too low" error
+        Fees::None,
         Some(payload),
         None,
     )?;
 
     let generator = Generator::try_new(settings, None, None)?;
-    println!("Generator created successfully");
 
     let pending = generator
         .generate_transaction()?
@@ -96,7 +93,23 @@ async fn send_transaction_with_payload(
 
     pending.try_sign_with_keys(&[private_key.secret_bytes()], None)?;
     let id = pending.try_submit(&client.rpc_api()).await?;
-    println!("Transaction submitted with ID: {}", id);
+    println!("\nTransaction submitted - Link to view on explorer below");
+    println!("https://explorer.kaspa.org/txs/{}", id);
 
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[tokio::test]
+    async fn test_main_transaction_succeeds() {
+        let result = connect_and_send().await;
+        assert!(
+            result.is_ok(),
+            "Transaction failed with error: {:?}",
+            result.err()
+        );
+    }
 }
