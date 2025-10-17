@@ -78,8 +78,8 @@ async fn send_transaction_with_payload(
         derived_address.clone(),
         1,
         1,
-        PaymentDestination::Change,
-        Some(1.04), // TODO: for some reason 1.0 causes "fee too low" error
+        PaymentDestination::PayloadOnly,
+        Some(1.0),
         Fees::None,
         Some(payload),
         None,

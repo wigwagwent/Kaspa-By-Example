@@ -1,0 +1,13 @@
+[package]
+name = "kbe-seed-parser"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+kaspa-bip32 = { workspace = true }
+kbe-utils = { workspace = true }
+
+[dev-dependencies]
+hex = { workspace = true }

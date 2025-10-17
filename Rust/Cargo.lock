@@ -1730,7 +1730,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "kasia_interface"
+name = "kasia-interface"
 version = "0.1.0"
 dependencies = [
  "hex",
@@ -1740,7 +1740,7 @@ dependencies = [
 [[package]]
 name = "kaspa-addresses"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "borsh",
  "js-sys",
@@ -1755,7 +1755,7 @@ dependencies = [
 [[package]]
 name = "kaspa-bip32"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "borsh",
  "bs58",
@@ -1782,7 +1782,7 @@ dependencies = [
 [[package]]
 name = "kaspa-consensus-client"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "ahash",
  "cfg-if 1.0.4",
@@ -1811,7 +1811,7 @@ dependencies = [
 [[package]]
 name = "kaspa-consensus-core"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "arc-swap",
  "async-trait",
@@ -1847,7 +1847,7 @@ dependencies = [
 [[package]]
 name = "kaspa-consensus-notify"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "async-channel 2.5.0",
  "cfg-if 1.0.4",
@@ -1867,7 +1867,7 @@ dependencies = [
 [[package]]
 name = "kaspa-consensus-wasm"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "cfg-if 1.0.4",
  "faster-hex",
@@ -1892,7 +1892,7 @@ dependencies = [
 [[package]]
 name = "kaspa-core"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "anyhow",
  "cfg-if 1.0.4",
@@ -1912,7 +1912,7 @@ dependencies = [
 [[package]]
 name = "kaspa-hashes"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "blake2b_simd",
  "borsh",
@@ -1931,7 +1931,7 @@ dependencies = [
 [[package]]
 name = "kaspa-index-core"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "async-channel 2.5.0",
  "async-trait",
@@ -1951,7 +1951,7 @@ dependencies = [
 [[package]]
 name = "kaspa-math"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "borsh",
  "faster-hex",
@@ -1971,7 +1971,7 @@ dependencies = [
 [[package]]
 name = "kaspa-merkle"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "kaspa-hashes",
 ]
@@ -1979,7 +1979,7 @@ dependencies = [
 [[package]]
 name = "kaspa-metrics-core"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "async-trait",
  "borsh",
@@ -1996,7 +1996,7 @@ dependencies = [
 [[package]]
 name = "kaspa-mining-errors"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "kaspa-consensus-core",
  "thiserror 1.0.69",
@@ -2005,7 +2005,7 @@ dependencies = [
 [[package]]
 name = "kaspa-muhash"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "kaspa-hashes",
  "kaspa-math",
@@ -2016,7 +2016,7 @@ dependencies = [
 [[package]]
 name = "kaspa-notify"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "async-channel 2.5.0",
  "async-trait",
@@ -2048,7 +2048,7 @@ dependencies = [
 [[package]]
 name = "kaspa-rpc-core"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "async-channel 2.5.0",
  "async-trait",
@@ -2090,7 +2090,7 @@ dependencies = [
 [[package]]
 name = "kaspa-rpc-macros"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "convert_case 0.6.0",
  "proc-macro-error",
@@ -2103,7 +2103,7 @@ dependencies = [
 [[package]]
 name = "kaspa-txscript"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "blake2b_simd",
  "borsh",
@@ -2134,7 +2134,7 @@ dependencies = [
 [[package]]
 name = "kaspa-txscript-errors"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "secp256k1",
  "thiserror 1.0.69",
@@ -2143,7 +2143,7 @@ dependencies = [
 [[package]]
 name = "kaspa-utils"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "arc-swap",
  "async-channel 2.5.0",
@@ -2173,7 +2173,7 @@ dependencies = [
 [[package]]
 name = "kaspa-wallet-core"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "aes",
  "ahash",
@@ -2252,7 +2252,7 @@ dependencies = [
 [[package]]
 name = "kaspa-wallet-keys"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "async-trait",
  "borsh",
@@ -2285,7 +2285,7 @@ dependencies = [
 [[package]]
 name = "kaspa-wallet-macros"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "convert_case 0.5.0",
  "proc-macro-error",
@@ -2299,7 +2299,7 @@ dependencies = [
 [[package]]
 name = "kaspa-wallet-pskt"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "bincode",
  "derive_builder",
@@ -2328,7 +2328,7 @@ dependencies = [
 [[package]]
 name = "kaspa-wasm-core"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "faster-hex",
  "hexplay",
@@ -2340,7 +2340,7 @@ dependencies = [
 [[package]]
 name = "kaspa-wrpc-client"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "async-std",
  "async-trait",
@@ -2377,7 +2377,7 @@ dependencies = [
 [[package]]
 name = "kaspa-wrpc-wasm"
 version = "1.0.1"
-source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=b8ea20b7#b8ea20b7808d9dccf8ddb77964695b6a84103ce6"
+source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "ahash",
  "async-std",
@@ -2406,16 +2406,16 @@ dependencies = [
 ]
 
 [[package]]
-name = "kbe_seed_parser"
+name = "kbe-seed-parser"
 version = "0.1.0"
 dependencies = [
  "hex",
  "kaspa-bip32",
- "kbe_utils",
+ "kbe-utils",
 ]
 
 [[package]]
-name = "kbe_utils"
+name = "kbe-utils"
 version = "0.1.0"
 dependencies = [
  "dotenv",
@@ -3431,15 +3431,15 @@ dependencies = [
 ]
 
 [[package]]
-name = "send_kasia_broadcast"
+name = "send-kasia-broadcast"
 version = "0.1.0"
 dependencies = [
- "kasia_interface",
+ "kasia-interface",
  "kaspa-addresses",
  "kaspa-wallet-core",
  "kaspa-wrpc-client",
- "kbe_seed_parser",
- "kbe_utils",
+ "kbe-seed-parser",
+ "kbe-utils",
  "tokio",
 ]
 

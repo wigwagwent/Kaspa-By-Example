@@ -1,6 +1,32 @@
 [workspace]
 resolver = "3"
 members = [
-    "kbe_utils", "send_kasia_broadcast", "kasia_interface", "kbe_seed_parser",
+    "kbe-utils", 
+    "send-kasia-broadcast", 
+    "kasia-interface", 
+    "kbe-seed-parser",
 ]
 
+[workspace.package]
+version = "0.1.0"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/wigwagwent/Kaspa-By-Example"
+edition = "2024"
+
+[workspace.dependencies]
+# Workspace packages
+kbe-utils = { path = "kbe-utils" }
+kbe-seed-parser = { path = "kbe-seed-parser" }
+kasia-interface = { path = "kasia-interface" }
+
+# Kaspa dependencies
+kaspa-addresses = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
+kaspa-bip32 = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
+kaspa-wallet-core = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
+kaspa-wrpc-client = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
+
+# External dependencies
+dotenv = "0.15.0"
+hex = "0.4"
+thiserror = "2.0.17"
+tokio = { version = "1", features = ["full"] }
