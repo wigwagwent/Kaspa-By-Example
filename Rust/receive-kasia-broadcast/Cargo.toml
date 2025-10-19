@@ -1,0 +1,18 @@
+[package]
+name = "receive-kasia-broadcast"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+kaspa-addresses = { workspace = true }
+kaspa-wallet-core = { workspace = true }
+kaspa-wrpc-client = { workspace = true }
+kaspa-notify = { workspace = true }
+kaspa-consensus-core = { workspace = true }
+tokio = { workspace = true }
+async-channel = { workspace = true }
+
+# Workspace packages
+kasia-interface = { workspace = true }

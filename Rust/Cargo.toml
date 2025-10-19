@@ -4,7 +4,7 @@ members = [
     "kbe-utils", 
     "send-kasia-broadcast", 
     "kasia-interface", 
-    "kbe-seed-parser",
+    "kbe-seed-parser", "receive-kasia-broadcast",
 ]
 
 [workspace.package]
@@ -24,9 +24,12 @@ kaspa-addresses = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b
 kaspa-bip32 = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
 kaspa-wallet-core = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
 kaspa-wrpc-client = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
+kaspa-notify = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
+kaspa-consensus-core = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
 
 # External dependencies
 dotenv = "0.15.0"
 hex = "0.4"
 thiserror = "2.0.17"
 tokio = { version = "1", features = ["full"] }
+async-channel = "2.3"

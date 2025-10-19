@@ -3189,6 +3189,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "receive-kasia-broadcast"
+version = "0.1.0"
+dependencies = [
+ "async-channel 2.5.0",
+ "kasia-interface",
+ "kaspa-addresses",
+ "kaspa-consensus-core",
+ "kaspa-notify",
+ "kaspa-wallet-core",
+ "kaspa-wrpc-client",
+ "tokio",
+]
+
+[[package]]
 name = "redox_syscall"
 version = "0.5.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"

@@ -2,6 +2,7 @@ use thiserror::Error;
 
 pub const BROADCAST_GROUP_MAXLEN: usize = 36;
 pub const BROADCAST_MESSAGE_MAXLEN: usize = 1000; // TODO: get the actual size or at least a better estimate
+pub const CIPH_MSG_PREFIX: &[u8] = b"ciph_msg:1:";
 
 #[derive(Error, Debug)]
 pub enum KaspaMessageError {
@@ -40,7 +41,7 @@ pub enum KaspaMessage {
 impl KaspaMessage {
     pub fn new_broadcast(group: impl Into<String>, message: impl Into<String>) -> Self {
         let broadcast = Self::Broadcast {
-            group: group.into(),
+            group: group.into().to_lowercase(),
             message: message.into(),
         };
 
@@ -87,7 +88,7 @@ impl KaspaMessage {
 
         match self {
             Self::Broadcast { group, message } => {
-                Ok(format!("ciph_msg:1:bcast:{}:{}", group, message).into_bytes())
+                Ok(format!("ciph_msg:1:bcast:{}:{}", group.to_lowercase(), message).into_bytes())
             }
             Self::Invalid => Err(KaspaMessageError::InvalidMessage),
             _ => Err(KaspaMessageError::UnknownMessageType),
@@ -102,7 +103,7 @@ impl KaspaMessage {
         }
 
         let broadcast = Self::Broadcast {
-            group: parts[0].to_string(),
+            group: parts[0].to_string().to_lowercase(),
             message: parts[1].to_string(),
         };
 
@@ -115,12 +116,34 @@ impl TryFrom<&[u8]> for KaspaMessage {
     type Error = KaspaMessageError;
 
     fn try_from(payload: &[u8]) -> Result<Self, Self::Error> {
-        let payload_bytes = hex::decode(payload)?;
-        let payload_str = String::from_utf8(payload_bytes)?;
+        let payload_str = String::from_utf8(payload.to_vec())?;
 
-        if let Some(rest) = payload_str.strip_prefix("ciph_msg:1:bcast:") {
+        let payload_str = payload_str
+            .strip_prefix("ciph_msg:1:")
+            .expect("Invalid prefix");
+
+        if let Some(rest) = payload_str.strip_prefix("bcast:") {
             Self::parse_broadcast(rest)
-        } else if payload_str.starts_with("ciph_msg:1:comm:") {
+        } else if payload_str.starts_with("comm:") {
+            Err(KaspaMessageError::UnknownMessageType) //todo!("Implement communication parsing")
+        } else {
+            Err(KaspaMessageError::UnknownMessageType)
+        }
+    }
+}
+
+impl TryFrom<&Vec<u8>> for KaspaMessage {
+    type Error = KaspaMessageError;
+    fn try_from(payload: &Vec<u8>) -> Result<Self, Self::Error> {
+        let payload_str = String::from_utf8(payload.to_vec())?;
+
+        let payload_str = payload_str
+            .strip_prefix("ciph_msg:1:")
+            .expect("Invalid prefix");
+
+        if let Some(rest) = payload_str.strip_prefix("bcast:") {
+            Self::parse_broadcast(rest)
+        } else if payload_str.starts_with("comm:") {
             Err(KaspaMessageError::UnknownMessageType) //todo!("Implement communication parsing")
         } else {
             Err(KaspaMessageError::UnknownMessageType)
