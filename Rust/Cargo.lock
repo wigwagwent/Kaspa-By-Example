@@ -3616,6 +3616,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "send-coins"
+version = "0.1.0"
+dependencies = [
+ "kasia-interface",
+ "kaspa-addresses",
+ "kaspa-wallet-core",
+ "kaspa-wrpc-client",
+ "kbe-seed-parser",
+ "kbe-utils",
+ "tokio",
+]
+
+[[package]]
 name = "send-kasia-broadcast"
 version = "0.1.0"
 dependencies = [
