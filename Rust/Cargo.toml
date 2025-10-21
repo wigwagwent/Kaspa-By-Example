@@ -4,7 +4,9 @@ members = [
     "kbe-utils", 
     "send-kasia-broadcast", 
     "kasia-interface", 
-    "kbe-seed-parser", "receive-kasia-broadcast",
+    "kbe-seed-parser",
+    "receive-kasia-broadcast",
+    "payload-decoder",
 ]
 
 [workspace.package]
@@ -26,10 +28,24 @@ kaspa-wallet-core = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "
 kaspa-wrpc-client = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
 kaspa-notify = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
 kaspa-consensus-core = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
+kaspa-wallet-keys = {git = "https://github.com/wigwagwent/rusty-kaspa.git", rev = "8b09c1c" }
 
 # External dependencies
-dotenv = "0.15.0"
+dotenv = "0.15"
 hex = "0.4"
-thiserror = "2.0.17"
+thiserror = "2.0"
 tokio = { version = "1", features = ["full"] }
 async-channel = "2.3"
+base64 = "0.22"
+
+# Needed for cipher lib that needs to be backported
+# cipher = { git = "https://github.com/wigwagwent/Kasia", rev = "c48bcfb" } 
+chacha20poly1305 = "0.10.1"
+k256 = {version = "0.13.4", features = ["ecdh", "arithmetic"]}
+sha2 = "0.10.8"
+secp256k1 = "0.29.1"
+wasm-bindgen = "0.2.100"
+# needed for randomness
+uuid = {version = "1.16.0", features = ["v4", "fast-rng", "js"]}
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"

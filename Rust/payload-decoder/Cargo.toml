@@ -1,0 +1,14 @@
+[package]
+name = "payload-decoder"
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+edition.workspace = true
+
+[dependencies]
+hex = { workspace = true }
+
+# Workspace packages
+kbe-seed-parser = { workspace = true }
+kbe-utils = { workspace = true }
+kasia-interface = { workspace = true }

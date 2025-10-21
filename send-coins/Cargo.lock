@@ -11,7 +11,7 @@ dependencies = [
  "macroific",
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -240,7 +240,7 @@ checksum = "9035ad2d096bed7955a320ee7e2230574d28fd3c3a0f186cbea1ff3c7eed5dbb"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -295,9 +295,9 @@ dependencies = [
 
 [[package]]
 name = "bitflags"
-version = "2.9.4"
+version = "2.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2261d10cca569e4643e526d8dc2e62e433cc8aba21ab764233731f8d369bf394"
+checksum = "812e12b5285cc515a9c72a5c1d3b6d46a19dac5acfef5265968c166106e31dd3"
 
 [[package]]
 name = "blake2"
@@ -361,7 +361,7 @@ dependencies = [
  "proc-macro-crate",
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -723,7 +723,7 @@ checksum = "f46882e17999c6cc590af592290432be3bce0428cb0d5f8b6715e4dc7b383eb3"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -747,7 +747,7 @@ dependencies = [
  "proc-macro2",
  "quote",
  "strsim",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -758,7 +758,7 @@ checksum = "fc34b93ccb385b40dc71c6fceac4b2ad23662c7eeb248cf10d529b7e055b6ead"
 dependencies = [
  "darling_core",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -790,7 +790,7 @@ dependencies = [
  "macroific",
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -841,7 +841,7 @@ dependencies = [
  "darling",
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -851,7 +851,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ab63b0e2bf4d5928aff72e83a7dace85d7bba5fe12dcc3c5a572d78caffd3f3c"
 dependencies = [
  "derive_builder_core",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -864,7 +864,7 @@ dependencies = [
  "proc-macro2",
  "quote",
  "rustc_version",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -884,7 +884,7 @@ checksum = "bda628edc44c4bb645fbe0f758797143e4e07926f7ebf4e9bdfbd3d2ce621df3"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
  "unicode-xid",
 ]
 
@@ -947,7 +947,7 @@ checksum = "97369cbbc041bc366949bc74d34658d6cda5621039731c6310521892a3a20ae0"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -1096,7 +1096,7 @@ dependencies = [
  "macroific",
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -1251,7 +1251,7 @@ checksum = "162ee34ebcb7c64a8abebc059ce0fee27c2262618d7b60ed8faf72fef13c3650"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -1726,9 +1726,9 @@ dependencies = [
 
 [[package]]
 name = "indexmap"
-version = "2.11.4"
+version = "2.12.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4b0f83760fb341a774ed326568e19f5a863af4a952def8c39f9ab92fd95b88e5"
+checksum = "6717a8d2a5a929a1a2eb43a12812498ed141a0bcfb7e8f7844fbdbe4303bba9f"
 dependencies = [
  "equivalent",
  "hashbrown 0.16.0",
@@ -1850,10 +1850,9 @@ dependencies = [
  "chacha20poly1305",
  "hex",
  "k256",
- "kaspa-addresses",
- "kaspa-bip32",
- "kaspa-wallet-keys",
- "kaspa-wrpc-client",
+ "kaspa-addresses 1.0.0",
+ "kaspa-bip32 1.0.1",
+ "kaspa-wallet-keys 1.0.0",
  "kbe-seed-parser",
  "secp256k1",
  "serde",
@@ -1862,6 +1861,21 @@ dependencies = [
  "thiserror 2.0.17",
  "uuid 1.18.1",
  "wasm-bindgen",
+]
+
+[[package]]
+name = "kaspa-addresses"
+version = "1.0.0"
+source = "git+https://github.com/kaspanet/rusty-kaspa.git?tag=v1.0.0#eb71df4d284593fccd1342094c37edc8c000da85"
+dependencies = [
+ "borsh",
+ "js-sys",
+ "serde",
+ "smallvec",
+ "thiserror 1.0.69",
+ "wasm-bindgen",
+ "workflow-log",
+ "workflow-wasm",
 ]
 
 [[package]]
@@ -1881,6 +1895,33 @@ dependencies = [
 
 [[package]]
 name = "kaspa-bip32"
+version = "1.0.0"
+source = "git+https://github.com/kaspanet/rusty-kaspa.git?tag=v1.0.0#eb71df4d284593fccd1342094c37edc8c000da85"
+dependencies = [
+ "borsh",
+ "bs58",
+ "getrandom 0.2.16",
+ "hmac",
+ "js-sys",
+ "kaspa-consensus-core 1.0.0",
+ "kaspa-utils 1.0.0",
+ "once_cell",
+ "pbkdf2",
+ "rand 0.8.5",
+ "rand_core 0.6.4",
+ "ripemd",
+ "secp256k1",
+ "serde",
+ "sha2",
+ "subtle",
+ "thiserror 1.0.69",
+ "wasm-bindgen",
+ "workflow-wasm",
+ "zeroize",
+]
+
+[[package]]
+name = "kaspa-bip32"
 version = "1.0.1"
 source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
@@ -1889,8 +1930,8 @@ dependencies = [
  "getrandom 0.2.16",
  "hmac",
  "js-sys",
- "kaspa-consensus-core",
- "kaspa-utils",
+ "kaspa-consensus-core 1.0.1",
+ "kaspa-utils 1.0.1",
  "once_cell",
  "pbkdf2",
  "rand 0.8.5",
@@ -1917,13 +1958,13 @@ dependencies = [
  "hex",
  "itertools 0.13.0",
  "js-sys",
- "kaspa-addresses",
- "kaspa-consensus-core",
- "kaspa-hashes",
- "kaspa-math",
- "kaspa-txscript",
- "kaspa-utils",
- "kaspa-wasm-core",
+ "kaspa-addresses 1.0.1",
+ "kaspa-consensus-core 1.0.1",
+ "kaspa-hashes 1.0.1",
+ "kaspa-math 1.0.1",
+ "kaspa-txscript 1.0.1",
+ "kaspa-utils 1.0.1",
+ "kaspa-wasm-core 1.0.1",
  "rand 0.8.5",
  "secp256k1",
  "serde",
@@ -1932,6 +1973,42 @@ dependencies = [
  "thiserror 1.0.69",
  "wasm-bindgen",
  "workflow-log",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "kaspa-consensus-core"
+version = "1.0.0"
+source = "git+https://github.com/kaspanet/rusty-kaspa.git?tag=v1.0.0#eb71df4d284593fccd1342094c37edc8c000da85"
+dependencies = [
+ "arc-swap",
+ "async-trait",
+ "borsh",
+ "cfg-if 1.0.4",
+ "faster-hex",
+ "futures-util",
+ "getrandom 0.2.16",
+ "itertools 0.13.0",
+ "js-sys",
+ "kaspa-addresses 1.0.0",
+ "kaspa-core 1.0.0",
+ "kaspa-hashes 1.0.0",
+ "kaspa-math 1.0.0",
+ "kaspa-merkle 1.0.0",
+ "kaspa-muhash 1.0.0",
+ "kaspa-txscript-errors 1.0.0",
+ "kaspa-utils 1.0.0",
+ "rand 0.8.5",
+ "secp256k1",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "smallvec",
+ "thiserror 1.0.69",
+ "wasm-bindgen",
+ "workflow-core",
+ "workflow-log",
+ "workflow-serializer",
  "workflow-wasm",
 ]
 
@@ -1949,14 +2026,14 @@ dependencies = [
  "getrandom 0.2.16",
  "itertools 0.13.0",
  "js-sys",
- "kaspa-addresses",
- "kaspa-core",
- "kaspa-hashes",
- "kaspa-math",
- "kaspa-merkle",
- "kaspa-muhash",
- "kaspa-txscript-errors",
- "kaspa-utils",
+ "kaspa-addresses 1.0.1",
+ "kaspa-core 1.0.1",
+ "kaspa-hashes 1.0.1",
+ "kaspa-math 1.0.1",
+ "kaspa-merkle 1.0.1",
+ "kaspa-muhash 1.0.1",
+ "kaspa-txscript-errors 1.0.1",
+ "kaspa-utils 1.0.1",
  "rand 0.8.5",
  "secp256k1",
  "serde",
@@ -1980,11 +2057,11 @@ dependencies = [
  "cfg-if 1.0.4",
  "derive_more 0.99.20",
  "futures",
- "kaspa-consensus-core",
- "kaspa-core",
- "kaspa-hashes",
+ "kaspa-consensus-core 1.0.1",
+ "kaspa-core 1.0.1",
+ "kaspa-hashes 1.0.1",
  "kaspa-notify",
- "kaspa-utils",
+ "kaspa-utils 1.0.1",
  "log",
  "paste",
  "thiserror 1.0.69",
@@ -1999,12 +2076,12 @@ dependencies = [
  "cfg-if 1.0.4",
  "faster-hex",
  "js-sys",
- "kaspa-addresses",
+ "kaspa-addresses 1.0.1",
  "kaspa-consensus-client",
- "kaspa-consensus-core",
- "kaspa-hashes",
- "kaspa-txscript",
- "kaspa-utils",
+ "kaspa-consensus-core 1.0.1",
+ "kaspa-hashes 1.0.1",
+ "kaspa-txscript 1.0.1",
+ "kaspa-utils 1.0.1",
  "rand 0.8.5",
  "secp256k1",
  "serde",
@@ -2014,6 +2091,26 @@ dependencies = [
  "wasm-bindgen",
  "workflow-log",
  "workflow-wasm",
+]
+
+[[package]]
+name = "kaspa-core"
+version = "1.0.0"
+source = "git+https://github.com/kaspanet/rusty-kaspa.git?tag=v1.0.0#eb71df4d284593fccd1342094c37edc8c000da85"
+dependencies = [
+ "anyhow",
+ "cfg-if 1.0.4",
+ "ctrlc",
+ "futures-util",
+ "intertrait",
+ "log",
+ "log4rs",
+ "num_cpus",
+ "thiserror 1.0.69",
+ "tokio",
+ "triggered",
+ "wasm-bindgen",
+ "workflow-log",
 ]
 
 [[package]]
@@ -2038,6 +2135,25 @@ dependencies = [
 
 [[package]]
 name = "kaspa-hashes"
+version = "1.0.0"
+source = "git+https://github.com/kaspanet/rusty-kaspa.git?tag=v1.0.0#eb71df4d284593fccd1342094c37edc8c000da85"
+dependencies = [
+ "blake2b_simd",
+ "borsh",
+ "cc",
+ "faster-hex",
+ "js-sys",
+ "kaspa-utils 1.0.0",
+ "keccak",
+ "once_cell",
+ "serde",
+ "sha2",
+ "wasm-bindgen",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "kaspa-hashes"
 version = "1.0.1"
 source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
@@ -2046,7 +2162,7 @@ dependencies = [
  "cc",
  "faster-hex",
  "js-sys",
- "kaspa-utils",
+ "kaspa-utils 1.0.1",
  "keccak",
  "once_cell",
  "serde",
@@ -2064,15 +2180,35 @@ dependencies = [
  "async-trait",
  "derive_more 0.99.20",
  "futures",
- "kaspa-consensus-core",
- "kaspa-hashes",
+ "kaspa-consensus-core 1.0.1",
+ "kaspa-hashes 1.0.1",
  "kaspa-notify",
- "kaspa-utils",
+ "kaspa-utils 1.0.1",
  "log",
  "paste",
  "serde",
  "thiserror 1.0.69",
  "triggered",
+]
+
+[[package]]
+name = "kaspa-math"
+version = "1.0.0"
+source = "git+https://github.com/kaspanet/rusty-kaspa.git?tag=v1.0.0#eb71df4d284593fccd1342094c37edc8c000da85"
+dependencies = [
+ "borsh",
+ "faster-hex",
+ "js-sys",
+ "kaspa-utils 1.0.0",
+ "malachite-base",
+ "malachite-nz",
+ "serde",
+ "serde-wasm-bindgen",
+ "thiserror 1.0.69",
+ "wasm-bindgen",
+ "workflow-core",
+ "workflow-log",
+ "workflow-wasm",
 ]
 
 [[package]]
@@ -2083,7 +2219,7 @@ dependencies = [
  "borsh",
  "faster-hex",
  "js-sys",
- "kaspa-utils",
+ "kaspa-utils 1.0.1",
  "malachite-base",
  "malachite-nz",
  "serde",
@@ -2097,10 +2233,18 @@ dependencies = [
 
 [[package]]
 name = "kaspa-merkle"
+version = "1.0.0"
+source = "git+https://github.com/kaspanet/rusty-kaspa.git?tag=v1.0.0#eb71df4d284593fccd1342094c37edc8c000da85"
+dependencies = [
+ "kaspa-hashes 1.0.0",
+]
+
+[[package]]
+name = "kaspa-merkle"
 version = "1.0.1"
 source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
- "kaspa-hashes",
+ "kaspa-hashes 1.0.1",
 ]
 
 [[package]]
@@ -2111,7 +2255,7 @@ dependencies = [
  "async-trait",
  "borsh",
  "futures",
- "kaspa-core",
+ "kaspa-core 1.0.1",
  "kaspa-rpc-core",
  "separator",
  "serde",
@@ -2125,8 +2269,19 @@ name = "kaspa-mining-errors"
 version = "1.0.1"
 source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
- "kaspa-consensus-core",
+ "kaspa-consensus-core 1.0.1",
  "thiserror 1.0.69",
+]
+
+[[package]]
+name = "kaspa-muhash"
+version = "1.0.0"
+source = "git+https://github.com/kaspanet/rusty-kaspa.git?tag=v1.0.0#eb71df4d284593fccd1342094c37edc8c000da85"
+dependencies = [
+ "kaspa-hashes 1.0.0",
+ "kaspa-math 1.0.0",
+ "rand_chacha 0.3.1",
+ "serde",
 ]
 
 [[package]]
@@ -2134,8 +2289,8 @@ name = "kaspa-muhash"
 version = "1.0.1"
 source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
- "kaspa-hashes",
- "kaspa-math",
+ "kaspa-hashes 1.0.1",
+ "kaspa-math 1.0.1",
  "rand_chacha 0.3.1",
  "serde",
 ]
@@ -2153,13 +2308,13 @@ dependencies = [
  "futures-util",
  "indexmap",
  "itertools 0.13.0",
- "kaspa-addresses",
- "kaspa-consensus-core",
- "kaspa-core",
- "kaspa-hashes",
- "kaspa-txscript",
- "kaspa-txscript-errors",
- "kaspa-utils",
+ "kaspa-addresses 1.0.1",
+ "kaspa-consensus-core 1.0.1",
+ "kaspa-core 1.0.1",
+ "kaspa-hashes 1.0.1",
+ "kaspa-txscript 1.0.1",
+ "kaspa-txscript-errors 1.0.1",
+ "kaspa-utils 1.0.1",
  "log",
  "parking_lot",
  "paste",
@@ -2186,20 +2341,20 @@ dependencies = [
  "faster-hex",
  "hex",
  "js-sys",
- "kaspa-addresses",
+ "kaspa-addresses 1.0.1",
  "kaspa-consensus-client",
- "kaspa-consensus-core",
+ "kaspa-consensus-core 1.0.1",
  "kaspa-consensus-notify",
  "kaspa-consensus-wasm",
- "kaspa-core",
- "kaspa-hashes",
+ "kaspa-core 1.0.1",
+ "kaspa-hashes 1.0.1",
  "kaspa-index-core",
- "kaspa-math",
+ "kaspa-math 1.0.1",
  "kaspa-mining-errors",
  "kaspa-notify",
  "kaspa-rpc-macros",
- "kaspa-txscript",
- "kaspa-utils",
+ "kaspa-txscript 1.0.1",
+ "kaspa-utils 1.0.1",
  "log",
  "paste",
  "rand 0.8.5",
@@ -2229,6 +2384,37 @@ dependencies = [
 
 [[package]]
 name = "kaspa-txscript"
+version = "1.0.0"
+source = "git+https://github.com/kaspanet/rusty-kaspa.git?tag=v1.0.0#eb71df4d284593fccd1342094c37edc8c000da85"
+dependencies = [
+ "blake2b_simd",
+ "borsh",
+ "cfg-if 1.0.4",
+ "hexplay",
+ "indexmap",
+ "itertools 0.13.0",
+ "kaspa-addresses 1.0.0",
+ "kaspa-consensus-core 1.0.0",
+ "kaspa-hashes 1.0.0",
+ "kaspa-txscript-errors 1.0.0",
+ "kaspa-utils 1.0.0",
+ "kaspa-wasm-core 1.0.0",
+ "log",
+ "parking_lot",
+ "rand 0.8.5",
+ "secp256k1",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "sha2",
+ "smallvec",
+ "thiserror 1.0.69",
+ "wasm-bindgen",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "kaspa-txscript"
 version = "1.0.1"
 source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
@@ -2238,12 +2424,12 @@ dependencies = [
  "hexplay",
  "indexmap",
  "itertools 0.13.0",
- "kaspa-addresses",
- "kaspa-consensus-core",
- "kaspa-hashes",
- "kaspa-txscript-errors",
- "kaspa-utils",
- "kaspa-wasm-core",
+ "kaspa-addresses 1.0.1",
+ "kaspa-consensus-core 1.0.1",
+ "kaspa-hashes 1.0.1",
+ "kaspa-txscript-errors 1.0.1",
+ "kaspa-utils 1.0.1",
+ "kaspa-wasm-core 1.0.1",
  "log",
  "parking_lot",
  "rand 0.8.5",
@@ -2260,11 +2446,50 @@ dependencies = [
 
 [[package]]
 name = "kaspa-txscript-errors"
+version = "1.0.0"
+source = "git+https://github.com/kaspanet/rusty-kaspa.git?tag=v1.0.0#eb71df4d284593fccd1342094c37edc8c000da85"
+dependencies = [
+ "secp256k1",
+ "thiserror 1.0.69",
+]
+
+[[package]]
+name = "kaspa-txscript-errors"
 version = "1.0.1"
 source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
  "secp256k1",
  "thiserror 1.0.69",
+]
+
+[[package]]
+name = "kaspa-utils"
+version = "1.0.0"
+source = "git+https://github.com/kaspanet/rusty-kaspa.git?tag=v1.0.0#eb71df4d284593fccd1342094c37edc8c000da85"
+dependencies = [
+ "arc-swap",
+ "async-channel 2.5.0",
+ "borsh",
+ "cfg-if 1.0.4",
+ "duct",
+ "event-listener 2.5.3",
+ "faster-hex",
+ "ipnet",
+ "itertools 0.13.0",
+ "log",
+ "mac_address",
+ "num_cpus",
+ "once_cell",
+ "parking_lot",
+ "rlimit",
+ "serde",
+ "sha2",
+ "smallvec",
+ "sysinfo",
+ "thiserror 1.0.69",
+ "triggered",
+ "uuid 1.18.1",
+ "wasm-bindgen",
 ]
 
 [[package]]
@@ -2328,23 +2553,23 @@ dependencies = [
  "indexed_db_futures",
  "itertools 0.13.0",
  "js-sys",
- "kaspa-addresses",
- "kaspa-bip32",
+ "kaspa-addresses 1.0.1",
+ "kaspa-bip32 1.0.1",
  "kaspa-consensus-client",
- "kaspa-consensus-core",
+ "kaspa-consensus-core 1.0.1",
  "kaspa-consensus-wasm",
- "kaspa-core",
- "kaspa-hashes",
+ "kaspa-core 1.0.1",
+ "kaspa-hashes 1.0.1",
  "kaspa-metrics-core",
  "kaspa-notify",
  "kaspa-rpc-core",
- "kaspa-txscript",
- "kaspa-txscript-errors",
- "kaspa-utils",
- "kaspa-wallet-keys",
+ "kaspa-txscript 1.0.1",
+ "kaspa-txscript-errors 1.0.1",
+ "kaspa-utils 1.0.1",
+ "kaspa-wallet-keys 1.0.1",
  "kaspa-wallet-macros",
  "kaspa-wallet-pskt",
- "kaspa-wasm-core",
+ "kaspa-wasm-core 1.0.1",
  "kaspa-wrpc-client",
  "kaspa-wrpc-wasm",
  "md-5",
@@ -2378,6 +2603,39 @@ dependencies = [
 
 [[package]]
 name = "kaspa-wallet-keys"
+version = "1.0.0"
+source = "git+https://github.com/kaspanet/rusty-kaspa.git?tag=v1.0.0#eb71df4d284593fccd1342094c37edc8c000da85"
+dependencies = [
+ "async-trait",
+ "borsh",
+ "downcast",
+ "faster-hex",
+ "hmac",
+ "js-sys",
+ "kaspa-addresses 1.0.0",
+ "kaspa-bip32 1.0.0",
+ "kaspa-consensus-core 1.0.0",
+ "kaspa-txscript 1.0.0",
+ "kaspa-txscript-errors 1.0.0",
+ "kaspa-utils 1.0.0",
+ "kaspa-wasm-core 1.0.0",
+ "rand 0.8.5",
+ "ripemd",
+ "secp256k1",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "sha2",
+ "thiserror 1.0.69",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "workflow-core",
+ "workflow-wasm",
+ "zeroize",
+]
+
+[[package]]
+name = "kaspa-wallet-keys"
 version = "1.0.1"
 source = "git+https://github.com/wigwagwent/rusty-kaspa?rev=8b09c1c#8b09c1cc583d7843644d64738a4692464ff733d6"
 dependencies = [
@@ -2387,13 +2645,13 @@ dependencies = [
  "faster-hex",
  "hmac",
  "js-sys",
- "kaspa-addresses",
- "kaspa-bip32",
- "kaspa-consensus-core",
- "kaspa-txscript",
- "kaspa-txscript-errors",
- "kaspa-utils",
- "kaspa-wasm-core",
+ "kaspa-addresses 1.0.1",
+ "kaspa-bip32 1.0.1",
+ "kaspa-consensus-core 1.0.1",
+ "kaspa-txscript 1.0.1",
+ "kaspa-txscript-errors 1.0.1",
+ "kaspa-utils 1.0.1",
+ "kaspa-wasm-core 1.0.1",
  "rand 0.8.5",
  "ripemd",
  "secp256k1",
@@ -2433,13 +2691,13 @@ dependencies = [
  "futures",
  "hex",
  "js-sys",
- "kaspa-addresses",
- "kaspa-bip32",
+ "kaspa-addresses 1.0.1",
+ "kaspa-bip32 1.0.1",
  "kaspa-consensus-client",
- "kaspa-consensus-core",
- "kaspa-txscript",
- "kaspa-txscript-errors",
- "kaspa-utils",
+ "kaspa-consensus-core 1.0.1",
+ "kaspa-txscript 1.0.1",
+ "kaspa-txscript-errors 1.0.1",
+ "kaspa-utils 1.0.1",
  "secp256k1",
  "separator",
  "serde",
@@ -2448,6 +2706,18 @@ dependencies = [
  "serde_json",
  "serde_repr",
  "thiserror 1.0.69",
+ "wasm-bindgen",
+ "workflow-wasm",
+]
+
+[[package]]
+name = "kaspa-wasm-core"
+version = "1.0.0"
+source = "git+https://github.com/kaspanet/rusty-kaspa.git?tag=v1.0.0#eb71df4d284593fccd1342094c37edc8c000da85"
+dependencies = [
+ "faster-hex",
+ "hexplay",
+ "js-sys",
  "wasm-bindgen",
  "workflow-wasm",
 ]
@@ -2475,8 +2745,8 @@ dependencies = [
  "cfg-if 1.0.4",
  "futures",
  "js-sys",
- "kaspa-addresses",
- "kaspa-consensus-core",
+ "kaspa-addresses 1.0.1",
+ "kaspa-consensus-core 1.0.1",
  "kaspa-consensus-wasm",
  "kaspa-notify",
  "kaspa-rpc-core",
@@ -2511,14 +2781,14 @@ dependencies = [
  "cfg-if 1.0.4",
  "futures",
  "js-sys",
- "kaspa-addresses",
+ "kaspa-addresses 1.0.1",
  "kaspa-consensus-client",
- "kaspa-consensus-core",
+ "kaspa-consensus-core 1.0.1",
  "kaspa-consensus-wasm",
  "kaspa-notify",
  "kaspa-rpc-core",
  "kaspa-rpc-macros",
- "kaspa-wasm-core",
+ "kaspa-wasm-core 1.0.1",
  "kaspa-wrpc-client",
  "ring",
  "serde",
@@ -2536,8 +2806,7 @@ dependencies = [
 name = "kbe-seed-parser"
 version = "0.1.0"
 dependencies = [
- "hex",
- "kaspa-bip32",
+ "kaspa-bip32 1.0.1",
  "kbe-utils",
 ]
 
@@ -2718,7 +2987,7 @@ dependencies = [
  "cfg-if 1.0.4",
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -2729,7 +2998,7 @@ checksum = "13198c120864097a565ccb3ff947672d969932b7975ebd4085732c9f09435e55"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -2742,7 +3011,7 @@ dependencies = [
  "macroific_core",
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -2820,13 +3089,13 @@ dependencies = [
 
 [[package]]
 name = "mio"
-version = "1.0.4"
+version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "78bed444cc8a2160f01cbcf811ef18cac863ad68ae8ca62092e8db51d51c761c"
+checksum = "69d83b0086dc8ecf3ce9ae2874b2d1290252e2a30720bea58a5c6639b0092873"
 dependencies = [
  "libc",
  "wasi",
- "windows-sys 0.59.0",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
@@ -3017,7 +3286,7 @@ checksum = "70d80829147ec6f1b27109c7daaea62fc3a21a0348cdddf22b4093f0c35ab25a"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -3036,16 +3305,6 @@ name = "paste"
 version = "1.0.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "57c0d7b74b563b49d38dae00a0c37d4d6de9b432382b2892f0574ddcae73fd0a"
-
-[[package]]
-name = "payload-decoder"
-version = "0.1.0"
-dependencies = [
- "hex",
- "kasia-interface",
- "kbe-seed-parser",
- "kbe-utils",
-]
 
 [[package]]
 name = "pbkdf2"
@@ -3336,20 +3595,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "receive-kasia-broadcast"
-version = "0.1.0"
-dependencies = [
- "async-channel 2.5.0",
- "kasia-interface",
- "kaspa-addresses",
- "kaspa-consensus-core",
- "kaspa-notify",
- "kaspa-wallet-core",
- "kaspa-wrpc-client",
- "tokio",
-]
-
-[[package]]
 name = "redox_syscall"
 version = "0.5.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3511,9 +3756,9 @@ dependencies = [
 
 [[package]]
 name = "rustls"
-version = "0.23.32"
+version = "0.23.33"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cd3c25631629d034ce7cd9940adc9d45762d46de2b0f57193c4443b92c6d4d40"
+checksum = "751e04a496ca00bb97a5e043158d23d66b5aabf2e1d5aa2a0aaebb1aafe6f82c"
 dependencies = [
  "once_cell",
  "ring",
@@ -3616,11 +3861,11 @@ dependencies = [
 ]
 
 [[package]]
-name = "send-kasia-broadcast"
+name = "send-coins"
 version = "0.1.0"
 dependencies = [
  "kasia-interface",
- "kaspa-addresses",
+ "kaspa-addresses 1.0.1",
  "kaspa-wallet-core",
  "kaspa-wrpc-client",
  "kbe-seed-parser",
@@ -3682,7 +3927,7 @@ checksum = "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -3706,7 +3951,7 @@ checksum = "175ee3e80ae9982737ca543e96133087cbd9a485eecc3bc4de9c1a37b47ea59c"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -3910,9 +4155,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-version = "2.0.106"
+version = "2.0.107"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ede7c438028d4436d71104916910f5bb611972c5cfd7f89b8300a8186e6fada6"
+checksum = "2a26dbd934e5451d21ef060c018dae56fc073894c5a7896f882928a76e6d081b"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -3936,7 +4181,7 @@ checksum = "728a70f3dbaf5bab7f0c4b1ac8d7ae5ea60a4b5549c8a5914361c99147a709d2"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -4009,7 +4254,7 @@ checksum = "4fee6c4efc90059e10f81e6d42c60a18f76588c3d74cb83a0b242a2b6c7504c1"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -4020,7 +4265,7 @@ checksum = "3ff15c8ecd7de3849db632e14d18d2571fa09dfc5ed93479bc4485c7a517c913"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -4116,7 +4361,7 @@ checksum = "af407857209536a95c8e56f8231ef2c2e2aff839b22e07a1ffcbc617e9db9fa5"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -4523,7 +4768,7 @@ dependencies = [
  "log",
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
  "wasm-bindgen-shared",
 ]
 
@@ -4558,7 +4803,7 @@ checksum = "9f07d2f20d4da7b26400c9f4a0511e6e0345b040694e8a75bd41d578fa4421d7"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
  "wasm-bindgen-backend",
  "wasm-bindgen-shared",
 ]
@@ -4684,7 +4929,7 @@ checksum = "9107ddc059d5b6fbfbffdfa7a7fe3e22a226def0b2608f72e9d552763d3e1ad7"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -4695,7 +4940,7 @@ checksum = "053e2e040ab57b9dc951b72c264860db7eb3b0200ba345b4e4c3b14f67855ddf"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -4706,7 +4951,7 @@ checksum = "29bee4b38ea3cde66011baa44dba677c432a78593e202392d1e9070cf2a7fca7"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -4717,7 +4962,7 @@ checksum = "3f316c4a2570ba26bbec722032c4099d8c8bc095efccdc15688708623367e358"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -5400,7 +5645,7 @@ checksum = "38da3c9736e16c5d3c8c597a9aaa5d1fa565d0532ae05e27c24aa62fb32c0ab6"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
  "synstructure",
 ]
 
@@ -5421,7 +5666,7 @@ checksum = "88d2b8d9c68ad2b9e4340d7832716a4d21a22a1154777ad56ea55c51a9cf3831"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]
 
 [[package]]
@@ -5441,7 +5686,7 @@ checksum = "d71e5d6e06ab090c67b5e44993ec16b72dcbaabc526db883a360057678b48502"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
  "synstructure",
 ]
 
@@ -5481,5 +5726,5 @@ checksum = "5b96237efa0c878c64bd89c436f661be4e46b2f3eff1ebb976f7ef2321d2f58f"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.106",
+ "syn 2.0.107",
 ]

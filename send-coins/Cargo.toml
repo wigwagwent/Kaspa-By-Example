@@ -1,0 +1,13 @@
+[package]
+name = "send-coins"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+kaspa-addresses = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
+kaspa-wallet-core = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
+kaspa-wrpc-client = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
+tokio = { version = "1", features = ["full"] }
+kbe-utils = { path = "../Rust/kbe-utils" }
+kbe-seed-parser = { path = "../Rust/kbe-seed-parser" }
+kasia-interface = { path = "../Rust/kasia-interface" }
