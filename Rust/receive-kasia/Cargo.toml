@@ -1,5 +1,5 @@
 [package]
-name = "receive-kasia-broadcast"
+name = "receive-kasia"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

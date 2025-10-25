@@ -5,7 +5,7 @@ members = [
     "send-kasia-broadcast", 
     "kasia-interface", 
     "kbe-seed-parser",
-    "receive-kasia-broadcast",
+    "receive-kasia",
     "payload-decoder",
     "send-coins", 
     "uxto-context",
