@@ -6,8 +6,10 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-kaspa-bip32 = { workspace = true }
 kbe-utils = { workspace = true }
+kaspa-bip32 = { workspace = true }
+kaspa-addresses = { workspace = true }
+kaspa-wrpc-client = { workspace = true }
 
 [dev-dependencies]
 hex = { workspace = true }

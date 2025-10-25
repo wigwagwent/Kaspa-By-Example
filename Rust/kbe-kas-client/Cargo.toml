@@ -1,0 +1,10 @@
+[package]
+name = "kbe-kas-client"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = { workspace = true }
+kaspa-wrpc-client = { workspace = true }
+kaspa-notify = { workspace = true }
+async-channel = { workspace = true }

@@ -1,5 +1,7 @@
+use kaspa_addresses::{Address, Version};
 use kaspa_bip32::secp256k1::{self, Secp256k1};
 use kaspa_bip32::{ExtendedPrivateKey, Language, Mnemonic};
+use kaspa_wrpc_client::prelude::{NetworkId, NetworkType};
 
 pub fn derive_keys(
     mnemonic_phrase: &str,
@@ -18,6 +20,38 @@ pub fn derive_keys(
     let x_only_pubkey = public_key.x_only_public_key().0;
 
     Ok((x_only_pubkey, secret_key))
+}
+
+pub fn load_account()
+-> Result<(Address, secp256k1::SecretKey, NetworkId), Box<dyn std::error::Error>> {
+    kbe_utils::load_users_env_file();
+    let mnemonic = std::env::var("MNEMONIC")?;
+
+    let network_id = NetworkId::new(NetworkType::Mainnet);
+    let (x_public_key, private_key) = derive_keys(&mnemonic)?;
+    let derived_address = Address::new(
+        network_id.into(),
+        Version::PubKey,
+        &x_public_key.serialize(),
+    );
+    println!("\nDerived address: {}", derived_address.to_string());
+    Ok((derived_address, private_key, network_id))
+}
+
+pub fn load_account2()
+-> Result<(Address, secp256k1::SecretKey, NetworkId), Box<dyn std::error::Error>> {
+    kbe_utils::load_users_env_file();
+    let mnemonic = std::env::var("MNEMONIC2")?;
+
+    let network_id = NetworkId::new(NetworkType::Mainnet);
+    let (x_public_key, private_key) = derive_keys(&mnemonic)?;
+    let derived_address = Address::new(
+        network_id.into(),
+        Version::PubKey,
+        &x_public_key.serialize(),
+    );
+    println!("\nDerived address: {}", derived_address.to_string());
+    Ok((derived_address, private_key, network_id))
 }
 
 #[cfg(test)]

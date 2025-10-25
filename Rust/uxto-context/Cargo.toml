@@ -1,13 +1,12 @@
 [package]
-name = "send-coins"
+name = "uxto-context"
 version.workspace = true
-edition.workspace = true
 license.workspace = true
 repository.workspace = true
+edition.workspace = true
 
 [dependencies]
 tokio = { workspace = true }
-kaspa-wallet-core ={ workspace = true }
 
 kbe-kas-client = { workspace = true }
 kbe-seed-parser = { workspace = true }

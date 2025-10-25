@@ -166,6 +166,28 @@ impl KaspaMessage {
         comm.validate_decrypt_comm().map_or(Self::Invalid, |_| comm)
     }
 
+    pub fn new_handshake_request(alias: String) -> Self {
+        let handshake_msg = HandshakeMessage {
+            message_type: "handshake".to_string(),
+            alias,
+            their_alias: String::new(),
+            timestamp: SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_secs(),
+            version: 1,
+            is_response: false,
+        };
+
+        let handshake = Self::DecryptHandshake {
+            decrypted_msg: handshake_msg,
+        };
+
+        handshake
+            .validate_decrypt_handshake()
+            .map_or(Self::Invalid, |_| handshake)
+    }
+
     pub fn new_handshake_response(their_alias: String, alias: String) -> Self {
         let handshake_msg = HandshakeMessage {
             message_type: "handshake".to_string(),
@@ -289,9 +311,13 @@ impl KaspaMessage {
 
         Self::validate_alias(&decrypted_msg.alias)?;
 
-        // if decrypted_msg.is_empty() || decrypted_msg.len() > BROADCAST_MESSAGE_MAXLEN {
-        //     return Err(KaspaMessageError::InvalidMessageLength);
-        // }
+        if &decrypted_msg.message_type != "handshake" {
+            return Err(KaspaMessageError::InvalidMessage);
+        }
+
+        if decrypted_msg.is_response {
+            Self::validate_alias(&decrypted_msg.their_alias)?;
+        }
 
         Ok(())
     }

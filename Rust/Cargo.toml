@@ -7,7 +7,12 @@ members = [
     "kbe-seed-parser",
     "receive-kasia-broadcast",
     "payload-decoder",
-    "send-coins",
+    "send-coins", 
+    "uxto-context",
+    "utxo_splitter", 
+    "handshake-send",
+    "kbe-kas-client",
+    "kbe-transactions"
 ]
 
 [workspace.package]
@@ -19,8 +24,11 @@ edition = "2024"
 [workspace.dependencies]
 # Workspace packages
 kbe-utils = { path = "kbe-utils" }
+kbe-kas-client = { path = "kbe-kas-client" }
 kbe-seed-parser = { path = "kbe-seed-parser" }
+kbe-transactions = { path = "kbe-transactions" }
 kasia-interface = { path = "kasia-interface" }
+
 
 # Kaspa dependencies
 kaspa-addresses = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
@@ -38,6 +46,7 @@ thiserror = "2.0"
 tokio = { version = "1", features = ["full"] }
 async-channel = "2.3"
 base64 = "0.22"
+rand = "0.9.2"
 
 # Needed for cipher lib that needs to be backported
 # cipher = { git = "https://github.com/wigwagwent/Kasia", rev = "c48bcfb" } 

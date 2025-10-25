@@ -1,5 +1,3 @@
-use kaspa_wallet_core::{tx::PaymentOutput, utils::kaspa_to_sompi};
-
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let (address, secret, network) = kbe_seed_parser::load_account()?;
@@ -8,17 +6,20 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let (processor, context) =
         kbe_transactions::get_utxo_context(client.clone(), network, &address).await?;
 
-    let payment = PaymentOutput {
-        address: address.clone(),
-        amount: kaspa_to_sompi(0.2),
-    };
-
-    let _tx_id1 = kbe_transactions::send_kaspa_transaction(
+    let _tx_id1 = kbe_transactions::send_payload_transaction(
         client.clone(),
         &context,
         &address,
-        vec![payment],
         Some("ABC".as_bytes().to_vec()),
+        &secret,
+    )
+    .await?;
+
+    let _tx_id2 = kbe_transactions::send_payload_transaction(
+        client.clone(),
+        &context,
+        &address,
+        Some("123".as_bytes().to_vec()),
         &secret,
     )
     .await?;

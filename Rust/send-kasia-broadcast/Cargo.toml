@@ -6,12 +6,10 @@ license.workspace = true
 repository.workspace = true
 
 [dependencies]
-kaspa-addresses = { workspace = true }
-kaspa-wallet-core = { workspace = true }
-kaspa-wrpc-client = { workspace = true }
 tokio = { workspace = true }
 
 # Workspace packages
-kbe-utils = { workspace = true }
+kbe-kas-client = { workspace = true }
 kbe-seed-parser = { workspace = true }
+kbe-transactions = { workspace = true }
 kasia-interface = { workspace = true }

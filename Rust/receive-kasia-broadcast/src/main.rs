@@ -1,7 +1,6 @@
 use kasia_interface::{CIPH_MSG_PREFIX, KaspaMessage};
 use kaspa_addresses::{Address, Version};
-use kaspa_wrpc_client::{KaspaRpcClient, WrpcEncoding, prelude::*};
-use std::sync::Arc;
+use kaspa_wrpc_client::prelude::*;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -10,40 +9,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 // Exists to call from tests
 async fn connect_and_listen() -> Result<(), Box<dyn std::error::Error>> {
-    println!("Connecting to Kaspa WebSocket node...");
-
-    // Connect to the Kaspa node
-    let client = Arc::new(KaspaRpcClient::new(
-        WrpcEncoding::Borsh,
-        Some("wss://wrpc.kasia.fyi/"),
-        None,
-        None,
-        None,
-    )?);
-
-    client.connect(None).await?;
-    println!("Connected successfully!");
-
     let (notification_sender, receiver) = async_channel::unbounded::<Notification>();
-
-    // Register listener
-    let listener_id =
-        client
-            .rpc_api()
-            .register_new_listener(kaspa_notify::connection::ChannelConnection::new(
-                "transaction-processor",
-                notification_sender,
-                kaspa_notify::connection::ChannelType::Persistent,
-            ));
-
-    // Subscribe to block added notifications only
-    client
-        .rpc_api()
-        .start_notify(listener_id, Scope::BlockAdded(BlockAddedScope {}))
-        .await
-        .expect("Could not add notification to client listener");
-
-    println!("Subscribed to block notifications. Waiting for transactions...");
+    let _client = kbe_kas_client::connect_kaspa_client(Some(notification_sender)).await?;
 
     loop {
         let notification = receiver.recv().await?;
@@ -107,18 +74,3 @@ fn extract_address_from_script(
     );
     derived_address.to_string()
 }
-
-// #[cfg(test)]
-// mod tests {
-//     use super::*;
-
-//     #[tokio::test]
-//     async fn test_main_transaction_succeeds() {
-//         let result = connect_and_listen().await;
-//         assert!(
-//             result.is_ok(),
-//             "Transaction failed with error: {:?}",
-//             result.err()
-//         );
-//     }
-// }
