@@ -1,10 +1,11 @@
 use std::{sync::Arc, time::Duration};
 
 use async_channel::Sender;
+use kaspa_notify::scope::{BlockAddedScope, VirtualChainChangedScope};
 use kaspa_wrpc_client::{
     KaspaRpcClient, WrpcEncoding,
     client::{ConnectOptions, ConnectStrategy},
-    prelude::{BlockAddedScope, NetworkId, NetworkType, Notification, Scope},
+    prelude::{NetworkId, NetworkType, Notification, Scope},
 };
 
 pub async fn connect_kaspa_client(
@@ -48,9 +49,20 @@ pub async fn connect_kaspa_client(
             // Subscribe to block added notifications only
             client
                 .rpc_api()
+                .start_notify(
+                    listener_id,
+                    Scope::VirtualChainChanged(VirtualChainChangedScope {
+                        include_accepted_transaction_ids: true,
+                    }),
+                )
+                .await
+                .expect("Could not add virtual chain notification to client listener");
+
+            client
+                .rpc_api()
                 .start_notify(listener_id, Scope::BlockAdded(BlockAddedScope {}))
                 .await
-                .expect("Could not add notification to client listener");
+                .expect("Could not add block added notification to client listener");
 
             println!("Subscribed to block notifications. Waiting for transactions...");
         }

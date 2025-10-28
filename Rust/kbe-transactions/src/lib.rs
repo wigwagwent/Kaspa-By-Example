@@ -98,6 +98,13 @@ pub async fn get_utxo_context(
         .scan_and_register_addresses(vec![address.clone()], None)
         .await?;
 
+    if utxo_context.balance().unwrap_or_default().is_empty() {
+        println!(
+            "Warning: The address {} has a balance of 0 KASPA.",
+            address.to_string()
+        );
+    }
+
     Ok((processor, utxo_context))
 }
 

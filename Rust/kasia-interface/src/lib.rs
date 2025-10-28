@@ -6,7 +6,7 @@ use thiserror::Error;
 
 pub mod cipher;
 
-pub const BROADCAST_GROUP_MAXLEN: usize = 12;
+pub const BROADCAST_GROUP_MAXLEN: usize = 36;
 pub const BROADCAST_MESSAGE_MAXLEN: usize = 15000;
 pub const ALIAS_LEN: usize = 12;
 pub const CIPH_MSG_PREFIX: &[u8] = b"ciph_msg:1:";
@@ -437,6 +437,12 @@ impl KaspaMessage {
         match self {
             Self::Broadcast { message, .. } => message.clone(),
             Self::DecryptCommunication { decrypted_msg, .. } => decrypted_msg.clone(),
+            Self::DecryptHandshake { decrypted_msg, .. } => {
+                match serde_json::to_string(&decrypted_msg) {
+                    Ok(json) => json,
+                    Err(_) => String::new(),
+                }
+            }
             _ => String::new(),
         }
     }

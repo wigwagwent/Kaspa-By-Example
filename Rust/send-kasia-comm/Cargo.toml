@@ -1,0 +1,15 @@
+[package]
+name = "send-kasia-comm"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+tokio = { workspace = true }
+
+# Workspace packages
+kbe-kas-client = { workspace = true }
+kbe-seed-parser = { workspace = true }
+kbe-transactions = { workspace = true }
+kasia-interface = { workspace = true }

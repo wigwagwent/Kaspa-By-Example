@@ -1,4 +1,4 @@
-use rand::Rng;
+use kaspa_wallet_core::{tx::PaymentOutput, utils::kaspa_to_sompi};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -9,20 +9,24 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let (processor, context) =
         kbe_transactions::get_utxo_context(client.clone(), network, &address).await?;
 
-    let mut rng = rand::rng();
-    let bytes: [u8; 6] = rng.random();
-    let alias = bytes
-        .iter()
-        .map(|b| format!("{:02x}", b))
-        .collect::<String>();
+    // let mut rng = rand::rng();
+    // let bytes: [u8; 6] = rng.random();
+    // let alias = hex::encode(bytes);
+    let alias = "a1f3c5d9e8b2".to_string(); // Example fixed alias
 
     let handshake = kasia_interface::KaspaMessage::new_handshake_request(alias);
     let payload = handshake.encrypt(&address2.to_string())?.to_payload()?;
 
-    let _tx_id = kbe_transactions::send_payload_transaction(
+    let payment = PaymentOutput {
+        address: address2.clone(),
+        amount: kaspa_to_sompi(0.2),
+    };
+
+    let _tx_id1 = kbe_transactions::send_kaspa_transaction(
         client.clone(),
         &context,
         &address,
+        vec![payment],
         Some(payload),
         &secret,
     )

@@ -27,6 +27,10 @@ pub fn load_account()
     kbe_utils::load_users_env_file();
     let mnemonic = std::env::var("MNEMONIC")?;
 
+    if mnemonic.is_empty() {
+        return Err("MNEMONIC environment variable is not set or empty".into());
+    }
+
     let network_id = NetworkId::new(NetworkType::Mainnet);
     let (x_public_key, private_key) = derive_keys(&mnemonic)?;
     let derived_address = Address::new(
@@ -41,10 +45,19 @@ pub fn load_account()
 pub fn load_account2()
 -> Result<(Address, secp256k1::SecretKey, NetworkId), Box<dyn std::error::Error>> {
     kbe_utils::load_users_env_file();
-    let mnemonic = std::env::var("MNEMONIC2")?;
+    let mnemonic1 = std::env::var("MNEMONIC")?;
+    let mnemonic2 = std::env::var("MNEMONIC2")?;
+
+    if mnemonic1 == mnemonic2 {
+        return Err("MNEMONIC and MNEMONIC2 must be different".into());
+    }
+
+    if mnemonic2.is_empty() {
+        return Err("MNEMONIC2 is not set in .env file".into());
+    }
 
     let network_id = NetworkId::new(NetworkType::Mainnet);
-    let (x_public_key, private_key) = derive_keys(&mnemonic)?;
+    let (x_public_key, private_key) = derive_keys(&mnemonic2)?;
     let derived_address = Address::new(
         network_id.into(),
         Version::PubKey,

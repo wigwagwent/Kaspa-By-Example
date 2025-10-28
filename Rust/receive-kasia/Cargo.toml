@@ -9,11 +9,15 @@ repository.workspace = true
 kaspa-addresses = { workspace = true }
 kaspa-wallet-core = { workspace = true }
 kaspa-wrpc-client = { workspace = true }
-kaspa-notify = { workspace = true }
+kaspa-bip32 = { workspace = true }
 kaspa-consensus-core = { workspace = true }
 tokio = { workspace = true }
 async-channel = { workspace = true }
+# rand = { workspace = true }
+hex = { workspace = true }
 
 # Workspace packages
 kasia-interface = { workspace = true }
 kbe-kas-client = { workspace = true }
+kbe-seed-parser = { workspace = true }
+kbe-transactions = { workspace = true }

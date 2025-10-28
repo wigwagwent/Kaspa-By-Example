@@ -1,5 +1,5 @@
 [package]
-name = "handshake-send"
+name = "send-kasia-handshake"
 version.workspace = true
 license.workspace = true
 repository.workspace = true
@@ -7,7 +7,7 @@ edition.workspace = true
 
 [dependencies]
 tokio = { workspace = true }
-rand = { workspace = true }
+kaspa-wallet-core ={ workspace = true }
 
 # Workspace packages
 kbe-kas-client = { workspace = true }

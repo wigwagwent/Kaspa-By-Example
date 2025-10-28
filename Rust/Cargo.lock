@@ -1365,18 +1365,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "handshake-send"
-version = "0.1.0"
-dependencies = [
- "kasia-interface",
- "kbe-kas-client",
- "kbe-seed-parser",
- "kbe-transactions",
- "rand 0.9.2",
- "tokio",
-]
-
-[[package]]
 name = "hash32"
 version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3378,13 +3366,16 @@ name = "receive-kasia"
 version = "0.1.0"
 dependencies = [
  "async-channel 2.5.0",
+ "hex",
  "kasia-interface",
  "kaspa-addresses",
+ "kaspa-bip32",
  "kaspa-consensus-core",
- "kaspa-notify",
  "kaspa-wallet-core",
  "kaspa-wrpc-client",
  "kbe-kas-client",
+ "kbe-seed-parser",
+ "kbe-transactions",
  "tokio",
 ]
 
@@ -3670,6 +3661,29 @@ name = "send-kasia-broadcast"
 version = "0.1.0"
 dependencies = [
  "kasia-interface",
+ "kbe-kas-client",
+ "kbe-seed-parser",
+ "kbe-transactions",
+ "tokio",
+]
+
+[[package]]
+name = "send-kasia-comm"
+version = "0.1.0"
+dependencies = [
+ "kasia-interface",
+ "kbe-kas-client",
+ "kbe-seed-parser",
+ "kbe-transactions",
+ "tokio",
+]
+
+[[package]]
+name = "send-kasia-handshake"
+version = "0.1.0"
+dependencies = [
+ "kasia-interface",
+ "kaspa-wallet-core",
  "kbe-kas-client",
  "kbe-seed-parser",
  "kbe-transactions",
