@@ -9,6 +9,7 @@ edition.workspace = true
 kaspa-addresses = { workspace = true }
 kaspa-wallet-core = { workspace = true }
 kaspa-wrpc-client = { workspace = true }
+kaspa-consensus-core = { workspace = true }
 kaspa-bip32 = { workspace = true }
 tokio = { workspace = true }
 

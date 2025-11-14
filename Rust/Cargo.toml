@@ -32,13 +32,13 @@ kasia-interface = { path = "kasia-interface" }
 
 
 # Kaspa dependencies
-kaspa-addresses = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
-kaspa-bip32 = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
-kaspa-wallet-core = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
-kaspa-wrpc-client = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
-kaspa-notify = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
-kaspa-consensus-core = { git = "https://github.com/wigwagwent/rusty-kaspa", rev = "8b09c1c" }
-kaspa-wallet-keys = {git = "https://github.com/wigwagwent/rusty-kaspa.git", rev = "8b09c1c" }
+kaspa-addresses = { git = "https://github.com/kaspanet/rusty-kaspa.git", rev = "7282223" }
+kaspa-bip32 = { git = "https://github.com/kaspanet/rusty-kaspa.git", rev = "7282223" }
+kaspa-wallet-core = { git = "https://github.com/kaspanet/rusty-kaspa.git", rev = "7282223" }
+kaspa-wrpc-client = { git = "https://github.com/kaspanet/rusty-kaspa.git", rev = "7282223" }
+kaspa-notify = { git = "https://github.com/kaspanet/rusty-kaspa.git", rev = "7282223" }
+kaspa-consensus-core = { git = "https://github.com/kaspanet/rusty-kaspa.git", rev = "7282223" }
+kaspa-wallet-keys = {git = "https://github.com/kaspanet/rusty-kaspa.git", rev = "7282223" }
 
 # External dependencies
 dotenv = "0.15"

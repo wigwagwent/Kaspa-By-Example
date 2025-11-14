@@ -20,7 +20,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 async fn connect_and_listen() -> Result<(), Box<dyn std::error::Error>> {
     let (address, secret, network) = kbe_seed_parser::load_account2()?;
     let (notification_sender, receiver) = async_channel::unbounded::<Notification>();
-    let client = kbe_kas_client::connect_kaspa_client(Some(notification_sender)).await?;
+    let client = kbe_kas_client::connect_kaspa_client(Some(notification_sender), true, true, false).await?;
     let (_processor, context) =
         kbe_transactions::get_utxo_context(client.clone(), network, &address).await?;
 

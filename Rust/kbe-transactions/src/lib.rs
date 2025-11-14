@@ -2,6 +2,7 @@ use std::{sync::Arc, vec};
 
 use kaspa_addresses::Address;
 use kaspa_bip32::secp256k1;
+use kaspa_consensus_core::Hash;
 use kaspa_wallet_core::{
     rpc::{DynRpcApi, Rpc},
     tx::{Fees, Generator, GeneratorSettings, PaymentDestination, PaymentOutput, PaymentOutputs},
@@ -15,16 +16,19 @@ pub async fn send_payload_transaction(
     address: &Address,
     payload: Option<Vec<u8>>,
     secret: &secp256k1::SecretKey,
-) -> Result<String, Box<dyn std::error::Error>> {
+) -> Result<Hash, Box<dyn std::error::Error>> {
+    let outputs = PaymentOutputs {
+        outputs: Vec::new(),
+    };
     let settings = GeneratorSettings::try_new_with_context(
         context.clone(),
         None,
         address.clone(),
         1,
         1,
-        PaymentDestination::PayloadOnly,
+        PaymentDestination::PaymentOutputs(outputs),
         None,
-        kaspa_wallet_core::tx::Fees::None,
+        kaspa_wallet_core::tx::Fees::SenderPays(0),
         payload,
         None,
     )?;
@@ -40,7 +44,7 @@ pub async fn send_payload_transaction(
     println!("\nTransaction submitted - Link to view on explorer below");
     println!("https://explorer.kaspa.org/txs/{}", id);
 
-    Ok(id.to_string())
+    Ok(id)
 }
 
 pub async fn send_kaspa_transaction(

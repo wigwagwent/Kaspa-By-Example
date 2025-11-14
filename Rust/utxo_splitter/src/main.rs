@@ -9,12 +9,12 @@ use kaspa_wrpc_client::{KaspaRpcClient, prelude::*};
 use std::sync::Arc;
 use tokio::time::{Duration, sleep};
 
-const SPLIT_ITERATIONS: usize = 3;
+const SPLIT_ITERATIONS: usize = 20;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let (address, secret, network) = kbe_seed_parser::load_account()?;
-    let client = kbe_kas_client::connect_kaspa_client(None).await?;
+    let client = kbe_kas_client::connect_kaspa_client(None, false, false, false).await?;
 
     println!("Will perform {} split iterations", SPLIT_ITERATIONS);
 
@@ -38,7 +38,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         for (i, utxo) in utxo_refs.into_iter().enumerate() {
             let utxo_amount = utxo.amount();
             let half_amount = utxo_amount / 2;
-            if half_amount <= kaspa_to_sompi(0.2) {
+            if half_amount <= kaspa_to_sompi(0.25) {
                 println!(
                     "  Skipping UTXO {}/{} with amount {} sompi (too small to split)",
                     i + 1,

@@ -2,6 +2,7 @@ use std::time::{SystemTime, UNIX_EPOCH};
 
 use base64::{Engine, engine::general_purpose};
 use kaspa_bip32::secp256k1;
+use kaspa_wallet_core::utils::kaspa_to_sompi;
 use thiserror::Error;
 
 pub mod cipher;
@@ -78,6 +79,15 @@ pub struct HandshakeMessage {
     pub is_response: bool,
 }
 
+#[cfg(feature = "phone")]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "camelCase")]
+pub struct AudioPacket {
+    pub seq: u16,
+    pub sent_daa: u64,
+    pub data: Vec<u8>,
+}
+
 #[derive(Debug, Clone)]
 pub enum KaspaMessage {
     Broadcast {
@@ -97,6 +107,19 @@ pub enum KaspaMessage {
     },
     DecryptHandshake {
         decrypted_msg: HandshakeMessage,
+    },
+    Payment {
+        amount: u64,
+    },
+    #[cfg(feature = "phone")]
+    EncryptPhoneCall {
+        alias: String,
+        encrypted_msg: cipher::EncryptedMessage,
+    },
+    #[cfg(feature = "phone")]
+    DecryptPhoneCall {
+        alias: String,
+        decrypted_msg: AudioPacket,
     },
     Invalid,
 }
@@ -166,6 +189,14 @@ impl KaspaMessage {
         comm.validate_decrypt_comm().map_or(Self::Invalid, |_| comm)
     }
 
+    #[cfg(feature = "phone")]
+    pub fn new_phonecall(alias: impl Into<String>, decrypted_msg: AudioPacket) -> Self {
+        Self::DecryptPhoneCall {
+            alias: alias.into(),
+            decrypted_msg,
+        }
+    }
+
     pub fn new_handshake_request(alias: String) -> Self {
         let handshake_msg = HandshakeMessage {
             message_type: "handshake".to_string(),
@@ -208,6 +239,11 @@ impl KaspaMessage {
         handshake
             .validate_decrypt_handshake()
             .map_or(Self::Invalid, |_| handshake)
+    }
+
+    pub fn new_payment_kaspa(amount: f64) -> Self {
+        let amount_u64 = kaspa_to_sompi(amount); // Convert to sompi
+        Self::Payment { amount: amount_u64 }
     }
 
     pub fn is_invalid(&self) -> bool {
@@ -329,7 +365,13 @@ impl KaspaMessage {
             Self::DecryptCommunication { .. } => self.validate_decrypt_comm(),
             Self::EncryptHandshake { .. } => self.validate_encrypt_handshake(),
             Self::DecryptHandshake { .. } => self.validate_decrypt_handshake(),
+            Self::Payment { .. } => Ok(()),
             Self::Invalid => Err(KaspaMessageError::InvalidMessage),
+
+            #[cfg(feature = "phone")]
+            Self::EncryptPhoneCall { .. } => Ok(()),
+            #[cfg(feature = "phone")]
+            Self::DecryptPhoneCall { .. } => Ok(()),
             // _ => Err(KaspaMessageError::UnknownMessageType),
         }
     }
@@ -339,29 +381,67 @@ impl KaspaMessage {
 
         match self {
             Self::Broadcast { group, message } => {
-                Ok(format!("ciph_msg:1:bcast:{}:{}", group.to_lowercase(), message).into_bytes())
+                let mut out =
+                    Vec::with_capacity(CIPH_MSG_PREFIX.len() + 6 + group.len() + message.len());
+                out.extend_from_slice(CIPH_MSG_PREFIX);
+                out.extend_from_slice(b"bcast:");
+                out.extend_from_slice(group.as_bytes());
+                out.push(b':');
+                out.extend_from_slice(message.as_bytes());
+                Ok(out)
             }
+
             Self::EncryptCommunication {
                 alias,
                 encrypted_msg,
             } => {
                 let hex = encrypted_msg.to_bytes();
                 let b64 = general_purpose::STANDARD.encode(hex);
-                Ok(format!("ciph_msg:1:comm:{}:{}", alias, b64).into_bytes())
+                let mut out =
+                    Vec::with_capacity(CIPH_MSG_PREFIX.len() + 5 + alias.len() + b64.len());
+                out.extend_from_slice(CIPH_MSG_PREFIX);
+                out.extend_from_slice(b"comm:");
+                out.extend_from_slice(alias.as_bytes());
+                out.push(b':');
+                out.extend_from_slice(b64.as_bytes());
+                Ok(out)
             }
             Self::DecryptCommunication { .. } => Err(KaspaMessageError::EncryptBeforeSending),
 
             Self::EncryptHandshake { encrypted_msg } => {
                 let msg = encrypted_msg.to_bytes();
-                let mut result = b"ciph_msg:1:handshake:".to_vec();
+                let mut result = Vec::with_capacity(CIPH_MSG_PREFIX.len() + 10 + msg.len());
+                result.extend_from_slice(CIPH_MSG_PREFIX);
+                result.extend_from_slice(b"handshake:");
                 result.extend_from_slice(&msg);
                 Ok(result)
             }
 
             Self::DecryptHandshake { .. } => Err(KaspaMessageError::EncryptBeforeSending),
 
+            Self::Payment { .. } => Ok(vec![]),
+
             Self::Invalid => Err(KaspaMessageError::InvalidMessage),
-            // _ => Err(KaspaMessageError::UnknownMessageType),
+
+            #[cfg(feature = "phone")]
+            Self::EncryptPhoneCall {
+                alias,
+                encrypted_msg,
+            } => {
+                let hex = encrypted_msg.to_bytes();
+                let b64 = general_purpose::STANDARD.encode(hex);
+                let mut out =
+                    Vec::with_capacity(CIPH_MSG_PREFIX.len() + 4 + alias.len() + b64.len());
+                out.extend_from_slice(CIPH_MSG_PREFIX);
+                out.extend_from_slice(b"phone:");
+                out.extend_from_slice(alias.as_bytes());
+                out.push(b':');
+                out.extend_from_slice(b64.as_bytes());
+                Ok(out)
+            }
+
+            #[cfg(feature = "phone")]
+            Self::DecryptPhoneCall { .. } => Err(KaspaMessageError::EncryptBeforeSending),
         }
     }
 
@@ -413,6 +493,37 @@ impl KaspaMessage {
         Ok(comm)
     }
 
+    #[cfg(feature = "phone")]
+    fn parse_phonecall(payload: &[u8]) -> Result<Self, KaspaMessageError> {
+        let payload_str = String::from_utf8(payload.to_vec())?;
+        let parts: Vec<&str> = payload_str.splitn(2, ':').collect();
+
+        if parts.len() != 2 {
+            return Err(KaspaMessageError::InvalidEncryptCommFormat);
+        }
+
+        let alias = parts[0].to_string();
+
+        let encrypted_bytes = general_purpose::STANDARD
+            .decode(parts[1])
+            .map_err(|_| KaspaMessageError::InvalidEncryptCommFormat)?;
+
+        let hex_string = encrypted_bytes
+            .iter()
+            .map(|b| format!("{:02x}", b))
+            .collect::<String>();
+
+        let encrypted_msg = cipher::EncryptedMessage::from_hex(&hex_string)
+            .map_err(|_| KaspaMessageError::InvalidEncryptCommFormat)?;
+
+        let comm = Self::EncryptPhoneCall {
+            alias,
+            encrypted_msg,
+        };
+
+        Ok(comm)
+    }
+
     fn parse_handshake(payload: &[u8]) -> Result<Self, KaspaMessageError> {
         let encrypted_msg = cipher::EncryptedMessage::from_bytes(payload);
 
@@ -427,6 +538,11 @@ impl KaspaMessage {
     pub fn get_alias(&self) -> Option<&str> {
         match self {
             Self::EncryptCommunication { alias, .. } | Self::DecryptCommunication { alias, .. } => {
+                Some(alias)
+            }
+
+            #[cfg(feature = "phone")]
+            Self::EncryptPhoneCall { alias, .. } | Self::DecryptPhoneCall { alias, .. } => {
                 Some(alias)
             }
             _ => None,
@@ -480,6 +596,25 @@ impl KaspaMessage {
 
                 // self.validate_decrypt_handshake()?;
             }
+
+            #[cfg(feature = "phone")]
+            Self::EncryptPhoneCall {
+                alias,
+                encrypted_msg,
+            } => {
+                let decrypted_msg = cipher::decrypt_with_secret_key(
+                    encrypted_msg.clone(),
+                    &secp_secret_key.secret_bytes(),
+                )
+                .map_err(|_| KaspaMessageError::DecryptionError)?;
+
+                let audio_packet: AudioPacket = serde_json::from_str(&decrypted_msg)?;
+
+                Ok(Self::DecryptPhoneCall {
+                    alias: alias.clone(),
+                    decrypted_msg: audio_packet,
+                })
+            }
             _ => Err(KaspaMessageError::InvalidMessage),
         }
     }
@@ -507,15 +642,33 @@ impl KaspaMessage {
 
                 Ok(Self::EncryptHandshake { encrypted_msg })
             }
+
+            #[cfg(feature = "phone")]
+            Self::DecryptPhoneCall {
+                alias,
+                decrypted_msg,
+            } => {
+                let json_msg = serde_json::to_string(&decrypted_msg)?;
+                let encrypted_msg = cipher::encrypt_message(receiver_address, &json_msg)
+                    .map_err(|_| KaspaMessageError::EncryptionError)?;
+
+                Ok(Self::EncryptPhoneCall {
+                    alias: alias.clone(),
+                    encrypted_msg,
+                })
+            }
             _ => Err(KaspaMessageError::InvalidMessage),
         }
     }
 
     pub fn is_encrypted(&self) -> bool {
-        matches!(
-            self,
-            Self::EncryptCommunication { .. } | Self::EncryptHandshake { .. }
-        )
+        match self {
+            Self::EncryptCommunication { .. } => true,
+            Self::EncryptHandshake { .. } => true,
+            #[cfg(feature = "phone")]
+            Self::EncryptPhoneCall { .. } => true,
+            _ => false,
+        }
     }
 }
 
@@ -542,6 +695,12 @@ impl TryFrom<&[u8]> for KaspaMessage {
             let content = &rest[10..]; // Skip "handshake:"
             Self::parse_handshake(content)
         } else {
+            #[cfg(feature = "phone")]
+            if rest.starts_with(b"phone:") {
+                let content = &rest[6..]; // Skip "phone:"
+                return Self::parse_phonecall(content);
+            }
+
             Err(KaspaMessageError::UnknownMessageType)
         }
     }
